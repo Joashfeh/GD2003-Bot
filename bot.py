@@ -19,6 +19,7 @@ async def on_ready():
         date_time = datetime.datetime.now()
         day = date_time.strftime("%A")
         tme = date_time.strftime("%H:%M:%S")
+        await asyncio.sleep(0.1)
            
         # Monday
         if day == "Monday":
@@ -67,19 +68,19 @@ async def on_ready():
                 await discord.abc.Messageable.send(ch, '@everyone niggas go watch your lectures :>')
                 await asyncio.sleep(1)
                 break
-
+            if tme == "20:38:00":
+                await discord.abc.Messageable.send(ch, 'test')
+                await asyncio.sleep(1)
+                break
 
 @client.command()
 async def clear(ctx, amount : int):
         await ctx.channel.purge(limit=amount)
-
+        print("Cleared", amount, "Messages")
 
 @clear.error
 async def clear_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send('Missing Arguments')
-
-
-    
+        await ctx.send('Missing Arguments')   
             
 client.run(TOKEN)
