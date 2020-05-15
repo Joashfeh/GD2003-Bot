@@ -80,12 +80,13 @@ async def on_command_error(ctx, error):
 
 @client.command()
 async def clear(ctx, amount : int):
-        await ctx.channel.purge(limit=amount)
-        print("Cleared", amount, "Messages")
+    await ctx.channel.purge(limit=amount)
+    print("Cleared", amount, "Messages")
         
 @client.command()
 async def time(ctx):
-    await ctx.send('The time now is', datetime.datetime.strftime("%H:%M:%S"))
+    await ctx.send('The time now is ' + str(datetime.datetime.now().strftime("%H:%M:%S")))
+    print (datetime.datetime.now())
 
 @clear.error
 async def clear_error(ctx, error):
