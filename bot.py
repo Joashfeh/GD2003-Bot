@@ -68,10 +68,6 @@ async def on_ready():
                 await discord.abc.Messageable.send(ch, '@everyone niggas go watch your lectures :>')
                 await asyncio.sleep(1)
                 break
-            if tme == "20:38:00":
-                await discord.abc.Messageable.send(ch, 'test')
-                await asyncio.sleep(1)
-                break
 
 @client.event
 async def on_command_error(ctx, error):
@@ -80,8 +76,12 @@ async def on_command_error(ctx, error):
 
 @client.command()
 async def clear(ctx, amount : int):
-    await ctx.channel.purge(limit=amount)
-    print("Cleared", amount, "Messages")
+    if ctx.author.id == 189971597795262464:
+        await ctx.channel.purge(limit=amount)
+        print("Cleared", amount, "Messages")
+    else:
+        await ctx.send('You do not have the permissions to clear messages.')
+        print("no.")
         
 @client.command()
 async def time(ctx):
