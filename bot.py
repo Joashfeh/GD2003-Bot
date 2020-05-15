@@ -73,10 +73,19 @@ async def on_ready():
                 await asyncio.sleep(1)
                 break
 
+@client.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send('Invalid command used.')
+
 @client.command()
 async def clear(ctx, amount : int):
         await ctx.channel.purge(limit=amount)
         print("Cleared", amount, "Messages")
+        
+@client.command()
+async def time(ctx):
+    await ctx.send('The time now is', datetime.datetime.strftime("%H:%M:%S"))
 
 @clear.error
 async def clear_error(ctx, error):
