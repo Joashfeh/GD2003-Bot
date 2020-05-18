@@ -70,19 +70,8 @@ async def on_ready():
                 continue
             if tme == "13:00:00":
                 await discord.abc.Messageable.send(ch, '@everyone niggas go watch your lectures :>')
-                await asyncio.sleep(1)
+                await asyncio.sleep(1)  
                 continue
-
-@client.event
-async def on_message(self, message):
-    string = 'nigga'
-    
-    if message.author == self.user:
-        return
-    
-    if string in message.content.lower():
-        channel = message.channel
-        await channel.send("nigga")
 
 @client.command()
 async def clear(ctx, amount : int):
@@ -118,11 +107,9 @@ async def cursed(ctx):
         print("Error")
 
 @client.command()
-async def astronomia(ctx):
+async def crab(ctx):
     
-    from embedlinks import astronomia
-    
-    url = random.choice(astronomia)
+    url = 'https://www.youtube.com/watch?v=LDU_Txk06tM'
     
     global voice
     channel = ctx.message.author.voice.channel
@@ -134,7 +121,7 @@ async def astronomia(ctx):
     else:
         voice = await channel.connect()
         
-    await ctx.send(f"joined {channel}")
+    await ctx.send(":crab:")
     
     # Play
     
@@ -155,6 +142,7 @@ async def astronomia(ctx):
     
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])
+        info_dict = ydl.extract_info(url, download=True)
     for file in os.listdir("./"):
         if file.endswith(".mp3"):
             print(f"Renamed file: {file}\n")
@@ -165,6 +153,62 @@ async def astronomia(ctx):
     voice.volume = 100
     voice.is_playing()
     
+    print("Song Length: ", info_dict['duration'])
+    await asyncio.sleep(info_dict['duration'] + 2)
+    await voice.disconnect()
+
+@client.command()
+async def astronomia(ctx):
+    
+    from embedlinks import astronomia
+    
+    url = random.choice(astronomia)
+    
+    global voice
+    channel = ctx.message.author.voice.channel
+    voice = get(client.voice_clients, guild=ctx.guild)
+    
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
+        
+    else:
+        voice = await channel.connect()
+    
+    # Play
+    
+    song_there = os.path.isfile("song.mp3")
+    
+    if song_there:
+            os.remove("song.mp3")
+    
+    print("Someone wants to play music let me get that ready for them...")
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+    }
+    
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
+        info_dict = ydl.extract_info(url, download=True)
+    for file in os.listdir("./"):
+        if file.endswith(".mp3"):
+            print(f"Renamed file: {file}\n")
+            os.rename(file, 'song.mp3')
+            await asyncio.sleep(1)
+        
+    voice.play(discord.FFmpegPCMAudio("song.mp3"))
+    voice.volume = 100
+    voice.is_playing()
+    
+    await ctx.send(f"Now Playing {info_dict['title']}")
+    
+    print("Song Length: ", info_dict['duration'])
+    await asyncio.sleep(info_dict['duration'] + 2)
+    await voice.disconnect()
 
 @client.command()
 async def stop(ctx):
@@ -180,5 +224,15 @@ async def stop(ctx):
 async def clear_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send('Missing Arguments')   
+        
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    
+    if 'nigga' in str(message.content).lower():
+        await discord.abc.Messageable.send(message.channel, ':regional_indicator_n::regional_indicator_i::regional_indicator_g::regional_indicator_g::regional_indicator_a: ')
+    
+    await client.process_commands(message)
             
 client.run(TOKEN)
