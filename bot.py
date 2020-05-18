@@ -1,11 +1,9 @@
 import discord
 from discord.ext import commands
 from discord.utils import get
-import youtube_dl
 import datetime
 import asyncio
 import random
-import os
 
 TOKEN = 'NzA5NzA4OTY0OTE2NjI1NDI5.Xrp2KQ.KEWuDkssI-lKCqaOg8VZzk2-L_c'
 client = commands.Bot(command_prefix = '!')   
@@ -132,7 +130,7 @@ async def crab(ctx):
     
     await ctx.send(":crab:")
     
-    print("Song Length: ")
+    print(f"Song Playing: {Noisestorm - Crab Rave [Monstercat Release]}")
     
     if not voice.is_playing():
         await asyncio.sleep(2)
@@ -163,7 +161,7 @@ async def astronomia(ctx):
     
     await ctx.send(f"Now Playing {url}")
     
-    print("Song Length: ")
+    print(f"Song Playing: {url}")
     
     if not voice.is_playing():
         await asyncio.sleep(2)
