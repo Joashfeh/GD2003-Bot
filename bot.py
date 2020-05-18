@@ -31,14 +31,6 @@ async def on_ready():
                 await discord.abc.Messageable.send(ch, '@everyone Personal Career Strategies is starting in 10 minutes')
                 await asyncio.sleep(1)
                 continue
-            if tme == "12:34:20":
-                await discord.abc.Messageable.send(ch, 'test')
-                await asyncio.sleep(1)
-                continue      
-            if tme == "12:34:30":
-                await discord.abc.Messageable.send(ch, 'test')
-                await asyncio.sleep(1)
-                continue  
             if tme == "11:50:00":
                 await discord.abc.Messageable.send(ch, '@everyone Introduction to Coding is starting in 10 minutes')
                 await asyncio.sleep(1)
