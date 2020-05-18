@@ -73,6 +73,11 @@ async def on_ready():
                 await asyncio.sleep(1)
                 continue
 
+@client.event
+async def on_message(ctx):
+    if ctx == "nigga":
+        ctx.send("nigga")
+
 @client.command()
 async def clear(ctx, amount : int):
     if ctx.author.id == 189971597795262464:
@@ -164,10 +169,6 @@ async def stop(ctx):
         await voice.disconnect()
         await ctx.send(f"left {channel}")
         
-@client.command()
-async def nigga(ctx):
-    await ctx.send("nigga")
-
 
 @clear.error
 async def clear_error(ctx, error):
