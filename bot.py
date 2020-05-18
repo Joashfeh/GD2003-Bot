@@ -74,9 +74,15 @@ async def on_ready():
                 continue
 
 @client.event
-async def on_message(ctx):
-    if ctx == "nigga":
-        ctx.send("nigga")
+async def on_message(self, message):
+    string = 'nigga'
+    
+    if message.author == self.user:
+        return
+    
+    if string in message.content.lower():
+        channel = message.channel
+        await channel.send("nigga")
 
 @client.command()
 async def clear(ctx, amount : int):
