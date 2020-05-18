@@ -114,8 +114,6 @@ async def cursed(ctx):
 @client.command()
 async def crab(ctx):
     
-    discord.opus.load_opus()
-    
     url = 'https://www.youtube.com/watch?v=LDU_Txk06tM'
     
     global voice
@@ -166,8 +164,6 @@ async def crab(ctx):
 
 @client.command()
 async def astronomia(ctx):
-    
-    discord.opus.load_opus()
     
     from embedlinks import astronomia
     
