@@ -114,8 +114,6 @@ async def cursed(ctx):
 @client.command()
 async def crab(ctx):
     
-    url = 'https://www.youtube.com/watch?v=LDU_Txk06tM'
-    
     global voice
     channel = ctx.message.author.voice.channel
     voice = get(client.voice_clients, guild=ctx.guild)
@@ -125,42 +123,20 @@ async def crab(ctx):
         
     else:
         voice = await channel.connect()
-        
-    await ctx.send(":crab:")
     
     # Play
-    
-    song_there = os.path.isfile("song.mp3")
-    
-    if song_there:
-            os.remove("song.mp3")
-    
-    print("Someone wants to play music let me get that ready for them...")
-    ydl_opts = {
-        'format': 'bestaudio/best',
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
-            'preferredquality': '192',
-        }],
-    }
-    
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([url])
-        info_dict = ydl.extract_info(url, download=True)
-    for file in os.listdir("./"):
-        if file.endswith(".mp3"):
-            print(f"Renamed file: {file}\n")
-            os.rename(file, 'song.mp3')
-            await asyncio.sleep(1)
-        
-    voice.play(discord.FFmpegPCMAudio("song.mp3"))
+       
+    voice.play(discord.FFmpegPCMAudio("Noisestorm - Crab Rave [Monstercat Release].mp3"), after=lambda e: print("Song complete"))
     voice.volume = 100
     voice.is_playing()
     
-    print("Song Length: ", info_dict['duration'])
-    await asyncio.sleep(info_dict['duration'] + 2)
-    await voice.disconnect()
+    await ctx.send(":crab:")
+    
+    print("Song Length: ")
+    
+    if not voice.is_playing():
+        await asyncio.sleep(2)
+        voice.disconnect()
 
 @client.command()
 async def astronomia(ctx):
@@ -180,40 +156,18 @@ async def astronomia(ctx):
         voice = await channel.connect()
     
     # Play
-    
-    song_there = os.path.isfile("song.mp3")
-    
-    if song_there:
-            os.remove("song.mp3")
-    
-    print("Someone wants to play music let me get that ready for them...")
-    ydl_opts = {
-        'format': 'bestaudio/best',
-        'postprocessors': [{
-            'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
-            'preferredquality': '192',
-        }],
-    }
-    
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([url])
-        info_dict = ydl.extract_info(url, download=True)
-    for file in os.listdir("./"):
-        if file.endswith(".mp3"):
-            print(f"Renamed file: {file}\n")
-            os.rename(file, 'song.mp3')
-            await asyncio.sleep(1)
-        
-    voice.play(discord.FFmpegPCMAudio("song.mp3"))
+       
+    voice.play(discord.FFmpegPCMAudio(f"{url}.mp3"), after=lambda e: print("Song complete"))
     voice.volume = 100
     voice.is_playing()
     
-    await ctx.send(f"Now Playing {info_dict['title']}")
+    await ctx.send(f"Now Playing {url}")
     
-    print("Song Length: ", info_dict['duration'])
-    await asyncio.sleep(info_dict['duration'] + 2)
-    await voice.disconnect()
+    print("Song Length: ")
+    
+    if not voice.is_playing():
+        await asyncio.sleep(2)
+        voice.disconnect()
 
 @client.command()
 async def stop(ctx):
