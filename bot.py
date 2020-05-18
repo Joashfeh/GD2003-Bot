@@ -130,7 +130,7 @@ async def crab(ctx):
     
     await ctx.send(":crab:")
     
-    print(f"Song Playing: {Noisestorm - Crab Rave [Monstercat Release]}")
+    print("Song Playing: Noisestorm - Crab Rave [Monstercat Release]")
     
     if not voice.is_playing():
         await asyncio.sleep(2)
