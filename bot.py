@@ -73,11 +73,6 @@ async def on_ready():
                 await asyncio.sleep(1)
                 continue
 
-@client.event
-async def on_command_error(ctx, error):
-    if isinstance(error, commands.CommandNotFound):
-        await ctx.send('Invalid command used.')
-
 @client.command()
 async def clear(ctx, amount : int):
     if ctx.author.id == 189971597795262464:
@@ -168,6 +163,10 @@ async def stop(ctx):
     if voice and voice.is_connected():
         await voice.disconnect()
         await ctx.send(f"left {channel}")
+        
+@client.command()
+async def nigga(ctx):
+    await ctx.send("nigga")
 
 
 @clear.error
