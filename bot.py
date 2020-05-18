@@ -111,7 +111,7 @@ async def cursed(ctx):
     except:
         print("Error")
 
-"""@client.command()
+@client.command()
 async def astronomia(ctx):
     
     from embedlinks import astronomia
@@ -168,7 +168,7 @@ async def stop(ctx):
     if voice and voice.is_connected():
         await voice.disconnect()
         await ctx.send(f"left {channel}")
-"""
+
 
 @clear.error
 async def clear_error(ctx, error):
