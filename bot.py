@@ -24,6 +24,9 @@ async def on_ready():
         day = date_time.strftime("%A")
         tme = date_time.strftime("%H:%M:%S")
         await asyncio.sleep(0.1)
+        
+        if tme == "16:20:00":
+            await discord.abc.Messageable.send(ch, '@everyone blaze it')
            
         # Monday
         if day == "Monday":
