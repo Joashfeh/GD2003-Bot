@@ -159,7 +159,7 @@ async def astronomia(ctx):
     voice.volume = 100
     voice.is_playing()
     
-    await ctx.send(f"Now Playing {url}")
+    await ctx.send(f"Now Playing: {url}")
     
     print(f"Song Playing: {url}")
     
