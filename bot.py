@@ -1,8 +1,11 @@
 import discord
 from discord.ext import commands
+from discord.utils import get
+import youtube_dl
 import datetime
 import asyncio
 import random
+import os
 
 TOKEN = 'NzA5NzA4OTY0OTE2NjI1NDI5.Xrp2KQ.KEWuDkssI-lKCqaOg8VZzk2-L_c'
 client = commands.Bot(command_prefix = '!')   
@@ -27,48 +30,56 @@ async def on_ready():
             if tme == "07:50:00":
                 await discord.abc.Messageable.send(ch, '@everyone Personal Career Strategies is starting in 10 minutes')
                 await asyncio.sleep(1)
-                break
+                continue
+            if tme == "12:34:20":
+                await discord.abc.Messageable.send(ch, 'test')
+                await asyncio.sleep(1)
+                continue      
+            if tme == "12:34:30":
+                await discord.abc.Messageable.send(ch, 'test')
+                await asyncio.sleep(1)
+                continue  
             if tme == "11:50:00":
                 await discord.abc.Messageable.send(ch, '@everyone Introduction to Coding is starting in 10 minutes')
                 await asyncio.sleep(1)
-                break            
+                continue           
             if tme == "14:50:00":
                 await discord.abc.Messageable.send(ch, '@everyone Object Oriented Programming is starting in 10 minutes')
                 await asyncio.sleep(1)
-                break
+                continue
                 
             # Tuesday
         if day == "Tuesday":
             if tme == "13:50:00":
                 await discord.abc.Messageable.send(ch, '@everyone Concept Ideation is starting in 10 minutes')
                 await asyncio.sleep(1)
-                break
+                continue
                 
             # Wednesday    
         if day == "Wednesday":
             if tme == "11:50:00":
                 await discord.abc.Messageable.send(ch, '@everyone Story Through Audio & Visual is starting in 10 minutes')
                 await asyncio.sleep(1)   
-                break
+                continue
             if tme == "16:50:00":
                 await discord.abc.Messageable.send(ch, '@everyone Understanding Singapore is starting in 10 minutes')
                 await asyncio.sleep(1)   
-                break
+                continue
                 
             # Friday    
         if day == "Friday":
             if tme == "07:50:00":
                 await discord.abc.Messageable.send(ch, '@everyone Linear Algebra is starting in 10 minutes')
                 await asyncio.sleep(1)
-                break
+                continue
             if tme == "09:50:00":
                 await discord.abc.Messageable.send(ch, '@everyone Effective Communication Skills is starting in 10 minutes')
                 await asyncio.sleep(1)
-                break
+                continue
             if tme == "13:00:00":
                 await discord.abc.Messageable.send(ch, '@everyone niggas go watch your lectures :>')
                 await asyncio.sleep(1)
-                break
+                continue
 
 @client.event
 async def on_command_error(ctx, error):
@@ -92,61 +103,7 @@ async def time(ctx):
 @client.command()
 async def cursed(ctx):
     
-    cursed_links = ["https://i.imgur.com/qGynhNc.jpg", 
-                   "https://i.pinimg.com/564x/14/3d/aa/143daa1829004fb6355cc94ca187e435.jpg",
-                   "https://i.imgur.com/ORD46Bl.jpg",
-                   "https://i.imgur.com/KnYwCFp.jpg",
-                   "https://i.imgur.com/i7foEYM.jpg",
-                   "https://i.imgur.com/OXpPeRS.jpg",
-                   "https://i.imgur.com/CVHGC23.jpg",
-                   "https://i.imgur.com/jMVv3uj.jpg",
-                   "https://i.imgur.com/YC0V2M3.jpg",
-                   "https://i.imgur.com/2xedmhB.jpg",
-                   "https://i.imgur.com/ff03NuR.jpg",
-                   "https://i.imgur.com/koQSGlj.jpg",
-                   "https://i.imgur.com/Az3DCJl.jpg",
-                   "https://i.imgur.com/JBvf8L9.jpg",
-                   "https://i.pinimg.com/564x/5a/1e/c6/5a1ec68e8fc6b253e06b9f49ff62af82.jpg",
-                   "https://i.pinimg.com/564x/5d/a8/2b/5da82b0e303cd24c3d6fa823b5322c4b.jpg",
-                   "https://i.pinimg.com/564x/49/a0/57/49a05725d156ba14981316c905fedd30.jpg",
-                   "https://i.pinimg.com/564x/54/f3/c0/54f3c020061db594c48e83b4ec79ed41.jpg",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-01/sub-buzz-26051-1493924228-6.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-03/sub-buzz-14100-1493923518-11.png?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-03/sub-buzz-14243-1493923581-2.png?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/15/asset/buzzfeed-prod-fastlane-01/sub-buzz-31611-1493926072-5.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-01/sub-buzz-25632-1493923541-3.png?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-02/sub-buzz-22344-1493923414-4.png?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-02/sub-buzz-22202-1493923439-8.png?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-01/sub-buzz-26118-1493924202-1.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-03/sub-buzz-14165-1493923496-5.png?resize=990:508?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-03/sub-buzz-14153-1493923629-3.png?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-02/sub-buzz-22378-1493923704-1.png?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/15/asset/buzzfeed-prod-fastlane-03/sub-buzz-21981-1493926233-1.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/15/asset/buzzfeed-prod-fastlane-02/sub-buzz-30672-1493926811-1.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/15/asset/buzzfeed-prod-fastlane-01/sub-buzz-925-1493926856-5.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/16/asset/buzzfeed-prod-fastlane-01/sub-buzz-3901-1493931222-3.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/16/asset/buzzfeed-prod-fastlane-01/sub-buzz-4032-1493931335-3.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/17/asset/buzzfeed-prod-fastlane-03/sub-buzz-25203-1493931732-1.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/15/asset/buzzfeed-prod-fastlane-01/sub-buzz-904-1493926930-5.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/5/11/asset/buzzfeed-prod-fastlane-03/sub-buzz-7377-1493998812-25.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-02/sub-buzz-22826-1493924094-1.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-02/sub-buzz-22821-1493924291-5.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/15/asset/buzzfeed-prod-fastlane-03/sub-buzz-20203-1493925891-7.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/15/asset/buzzfeed-prod-fastlane-03/sub-buzz-22594-1493927334-1.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/16/asset/buzzfeed-prod-fastlane-02/sub-buzz-577-1493931099-6.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-03/sub-buzz-14491-1493923964-2.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/15/asset/buzzfeed-prod-fastlane-01/sub-buzz-935-1493926542-8.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/16/asset/buzzfeed-prod-fastlane-01/sub-buzz-3927-1493931291-1.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-02/sub-buzz-22503-1493924129-1.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/5/11/asset/buzzfeed-prod-fastlane-01/sub-buzz-21003-1493998845-14.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/16/asset/buzzfeed-prod-fastlane-03/sub-buzz-24782-1493931070-7.png?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/17/asset/buzzfeed-prod-fastlane-03/sub-buzz-25203-1493932139-6.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/17/asset/buzzfeed-prod-fastlane-03/sub-buzz-25339-1493931834-4.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-03/sub-buzz-14436-1493923735-2.png?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/17/asset/buzzfeed-prod-fastlane-02/sub-buzz-654-1493931689-5.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/17/asset/buzzfeed-prod-fastlane-02/sub-buzz-1400-1493932179-1.jpg?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-03/sub-buzz-14420-1493924033-18.jpg?resize=990:742?output-quality=auto&output-format=auto&downsize=640:*",
-                   "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/17/asset/buzzfeed-prod-fastlane-03/sub-buzz-25738-1493932534-1.jpg?output-quality=auto&output-format=auto&downsize=640:*"]
+    from embedlinks import cursed_links
     
     try:
         chosen_image = random.choice(cursed_links)
@@ -161,6 +118,64 @@ async def cursed(ctx):
         await ctx.send(embed=embed)
     except:
         print("Error")
+
+@client.command()
+async def astronomia(ctx):
+    
+    from embedlinks import astronomia
+    
+    url = random.choice(astronomia)
+    
+    global voice
+    channel = ctx.message.author.voice.channel
+    voice = get(client.voice_clients, guild=ctx.guild)
+    
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
+        
+    else:
+        voice = await channel.connect()
+        
+    await ctx.send(f"joined {channel}")
+    
+    # Play
+    
+    song_there = os.path.isfile("song.mp3")
+    
+    if song_there:
+            os.remove("song.mp3")
+    
+    print("Someone wants to play music let me get that ready for them...")
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+    }
+    
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
+    for file in os.listdir("./"):
+        if file.endswith(".mp3"):
+            print(f"Renamed file: {file}\n")
+            os.rename(file, 'song.mp3')
+            await asyncio.sleep(1)
+        
+    voice.play(discord.FFmpegPCMAudio("song.mp3"))
+    voice.volume = 100
+    voice.is_playing()
+    
+
+@client.command()
+async def stop(ctx):
+    channel = ctx.message.author.voice.channel
+    voice = get(client.voice_clients, guild=ctx.guild)
+    
+    if voice and voice.is_connected():
+        await voice.disconnect()
+        await ctx.send(f"left {channel}")
 
 @clear.error
 async def clear_error(ctx, error):
