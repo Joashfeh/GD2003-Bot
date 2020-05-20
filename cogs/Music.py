@@ -58,7 +58,11 @@ class Music(commands.Cog):
         else:
             await ctx.send("I am not connected to a channel.")
             
-        
+    @commands.command()
+    async def oceanman(self, ctx):
+        await self.play(ctx, 'Ocean Man')
+        await ctx.send("OCEAN MAN :ocean: :heart_eyes: Take me by the hand :raised_hand: lead me to the land that you understand :raised_hands: :ocean: OCEAN MAN :ocean: :heart_eyes: The voyage :bike: to the corner of the :earth_americas: globe is a real trip :ok_hand: :ocean: OCEAN MAN :ocean: :heart_eyes: The crust of a tan man :person_wearing_turban: imbibed by the sand :thumbsup: Soaking up the :sweat_drops: thirst of the land :100:")
+   
     @commands.command()
     async def crab(self, ctx):
         await self.play(ctx, 'Noisestorm - Crab Rave [Monstercat Release]')
