@@ -54,7 +54,7 @@ cursed_links = ["https://i.imgur.com/qGynhNc.jpg",
                 "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/14/asset/buzzfeed-prod-fastlane-03/sub-buzz-14420-1493924033-18.jpg?resize=990:742?output-quality=auto&output-format=auto&downsize=640:*",
                 "https://img.buzzfeed.com/buzzfeed-static/static/2017-05/4/17/asset/buzzfeed-prod-fastlane-03/sub-buzz-25738-1493932534-1.jpg?output-quality=auto&output-format=auto&downsize=640:*"]
 
-astronomia = ["Tony Igy - Astronomia (Zac Waters Remix)", 
+astronomia_titles = ["Tony Igy - Astronomia (Zac Waters Remix)", 
               "[Astronomia] Remix By Jiaye 抖音热门电音完整版 Trending TikTok EDM Full Version",
               "Astronomia (Coffin Dance synthwaveretro 80s remix)",
               "Astronomia (Coffin Meme) - HARDSTYLE Remix",
