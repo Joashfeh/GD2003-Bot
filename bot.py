@@ -91,6 +91,24 @@ async def time(ctx):
     print (datetime.datetime.now())
 
 @client.command()
+async def yixing(ctx):
+    
+    from embedlinks import yixing
+    
+    try:
+        quote = random.choice(yixing)
+        
+        embed = discord.Embed(colour=discord.Colour.blue(),
+                              title="Yixing Quotes",
+                              description=quote
+                              )
+        embed.set_footer(text=f"Requested by {ctx.author.name}")
+        
+        await ctx.send(embed=embed)
+    except Exception as e:
+        print(str(e))
+        
+@client.command()
 async def cursed(ctx):
     
     from embedlinks import cursed_links
@@ -106,8 +124,8 @@ async def cursed(ctx):
         embed.set_footer(text=f"Requested by {ctx.author.name}")
     
         await ctx.send(embed=embed)
-    except:
-        print("Error")
+    except Exception as e:
+        print(str(e))
 
 @client.command()
 async def crab(ctx):
