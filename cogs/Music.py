@@ -11,6 +11,8 @@ class Music(commands.Cog):
     def __init__(self, client):
         self.client = client
     
+    # Play function
+    
     async def play(self, ctx, song):      
         
         if ctx.author.id in id_blacklist:
@@ -29,13 +31,14 @@ class Music(commands.Cog):
         # Play
            
         voice.play(discord.FFmpegPCMAudio(f"{song}.mp3"), after=lambda e: print("Song complete"))
-        voice.volume = 100
+        voice.volume = 70
         voice.is_playing()
         
         print(f"Song Playing: {song}")
         
         if not voice.is_playing():
-            await asyncio.sleep(2)
+            print("Test")
+            await asyncio.sleep(1)
             await voice.disconnect()
         
     
@@ -50,7 +53,6 @@ class Music(commands.Cog):
         voice = get(self.client.voice_clients, guild=ctx.guild)
         
         print(channel)
-        print(voice)
         
         if voice and voice.is_connected():
             await voice.disconnect()

@@ -5,7 +5,6 @@ import datetime
 import asyncio
 import os
 
-TOKEN = 'NzA5NzA4OTY0OTE2NjI1NDI5.Xrp2KQ.KEWuDkssI-lKCqaOg8VZzk2-L_c'
 client = commands.Bot(command_prefix = '!')   
 
 id_blacklist = [257016086522888192]
@@ -141,4 +140,6 @@ for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')    
     
-client.run(TOKEN)
+with open('token.txt', 'r') as f:
+    token = f.readline()
+client.run(token)
